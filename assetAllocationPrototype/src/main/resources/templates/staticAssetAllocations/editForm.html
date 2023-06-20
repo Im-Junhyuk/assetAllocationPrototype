@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>수정</title>
+</head>
+<body>
+
+    <form th:action="@{/staticAssetAllocations/{id} (id=${sAA.id})}" th:method="post">
+
+        <div class="container">
+            <div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>stock</th>
+                        <th>bond</th>
+                        <th>gold</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="staticAssetAllocation : ${sAA}">
+                        <td th:text="${sAA.id}"></td>
+                        <td th:text="${sAA.name}"></td>
+                        <td th:text="${sAA.stock}"></td>
+                        <td th:text="${sAA.bond}"></td>
+                        <td th:text="${sAA.gold}"></td>
+                    </tr>
+                    <div>
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="name" placeholder="이름">
+
+                        <label for="stock">주식</label>
+                        <input type="text" id="stock" name="stock" placeholder="0">
+
+                        <label for="bond">채권</label>
+                        <input type="text" id="bond" name="bond" placeholder="0">
+
+                        <label for="bond">금</label>
+                        <input type="text" id="gold" name="gold" placeholder="0">
+                    </div>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div> <!-- /container -->
+
+        <button type="submit">수정</button>
+        <td> <button th:formaction="|@{delete/}+${sAA.id}|">delete</button> </td>
+        <td> <button th:formaction="|@{/staticAssetAllocations}|" th:method="get">취소</button> </td>
+        <td> <button th:onclick="|location.href='@{/staticAssetAllocation}'|">뒤로</button></td>
+        <td> <button th:onclick="|location.href='@{/redirect:/}'|">redirect</button></td>
+    </form>
+
+
+</body>
+</html>

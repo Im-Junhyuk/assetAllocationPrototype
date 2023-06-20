@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>목록</title>
+</head>
+<body>
+<div class="container">
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>stock</th>
+        <th>bond</th>
+        <th>gold</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="staticAssetAllocation : ${staticAssetAllocations}">
+        <td th:text="${staticAssetAllocation.id}"></td>
+        <td th:text="${staticAssetAllocation.name}"></td>
+        <td th:text="${staticAssetAllocation.stock}"></td>
+        <td th:text="${staticAssetAllocation.bond}"></td>
+        <td th:text="${staticAssetAllocation.gold}"></td>
+        <td> <button th:onclick="|location.href='@{/staticAssetAllocations/}'+${staticAssetAllocation.id}|">detail</button> </td>
+        <td> <button th:onclick="|location.href='@{/staticAssetAllocations/delete/}'+${staticAssetAllocation.id}|">delete</button> </td>
+      </tr>
+      <td> <button th:onclick="|location.href='@{/staticAssetAllocation}'|">뒤로</button></td>
+      </tbody>
+    </table>
+  </div>
+</div> <!-- /container -->
+</body>
+</html>
